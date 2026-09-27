@@ -1,8 +1,7 @@
-// tandai sudah dikunjungi (dipakai hub buat cek unlock bonus page)
+
 localStorage.setItem("visited_memories", "true");
 
-// ================= DATA MEMORY =================
-// Teks di bawah ini ditranskrip dari fotomu — silakan koreksi kalau ada yang meleset
+
 
 const judulMemory = [
     "where it all started",
@@ -12,11 +11,14 @@ const judulMemory = [
 ];
 
 const isiMemory = [
-`Pertama kali kita interaksi saat kumpul organisasi buat nyiapin hadiah lomba.
+`Sayaaaaaangg masi ingaaat pertemuaaan pertama kitaa kalaa ituuu? hmm mungkin bukan pertemuan pertama sii lebih ke arah interaksi pertama kitaa hihi
 
-Ngobrolnya masih tipis-tipis, belum sedekat sekarang.
+inii tuu lucuu tauu buaat di ingaat, moment nyaa terjadi tanpaa rencana sebetul nyaa, kebetulaan bangeet, kitaa lagi ngumpul buaat nge packing hadiaah kann
+nahh di sanaa kitaa adaa ngobroll tipiss tipiss, ingaat kadaa pas ulun duduk truss minggirin hadiaah yang di atas mejaa, modus banget ya hihi, truss kalau sayaaang ingaat jugaa 
+disana kamuu ada nnaya packingaan nya baguss ngaa, truss di bulli mudii, baruu kamu nanyaa ke ulunn, truss ulun jawaab dehh baguss kokk, rapii wii good job
+truss syaaang jawaaab tuukan emang cuma ka rasyid yang baikk, jujuur di sana adaa bangeet malu sama tersanjung nyaa, gimanaa tidaa ratu nya bidadari bersabdaa sayaaang hihi
 
-Tapi kalau dipikir-pikir lagi... lucu juga yaa, ternyata dari obrolan kecil itu bakal ada cerita sejauh ini. ♡`,
+lucu yaa kalaau di ingaat, ternyata dari obrolan kecil itu bakal ada cerita sejauh ini. ♡`,
 
 `or... my very obvious excuse to see you ♡
 

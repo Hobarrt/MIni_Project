@@ -1,9 +1,7 @@
-// tandai sudah dikunjungi (dipakai hub buat cek unlock bonus page)
 localStorage.setItem("visited_cake", "true");
 
-// ================= STATE =================
 const totalCandles = 4;
-let candleStatus = [false, false, false, false]; // FALSE = wish belum dibuka
+let candleStatus = [false, false, false, false]; 
 
 const candles = document.querySelectorAll(".candle-marker");
 const wishCards = document.querySelectorAll(".wish-card");
@@ -32,34 +30,34 @@ candles.forEach(candle => {
     candle.addEventListener("click", () => {
         const index = parseInt(candle.dataset.index, 10);
 
-        // sistem cek dulu apakah lilin ini sudah pernah diklik
+       
         if (candleStatus[index] === true) {
             showToast();
             return;
         }
 
-        // status diubah jadi aktif (TRUE)
+       
         candleStatus[index] = true;
         candle.classList.add("found");
 
-        // tampilkan wish card yang sesuai
+        
         wishCards[index].classList.add("revealed");
 
         checkAllFound();
     });
 });
 
-// ================= MAKE A WISH SEQUENCE =================
+
 const finalOverlay = document.getElementById("finalOverlay");
 const finalText = document.getElementById("finalText");
 const backFinalBtn = document.getElementById("backFinalBtn");
 
 makeWishBtn.addEventListener("click", () => {
-    // tiup lilin: marker yang tersisa ikut memudar, foto kue meredup pelan (simulasi lilin padam)
+    
     candles.forEach(candle => candle.classList.add("blowing"));
     cakePhoto.classList.add("dimmed");
 
-    // setelah "lilin padam", tampilkan overlay
+    
     setTimeout(() => {
         finalOverlay.classList.remove("hidden");
         finalText.textContent = "make a wish, sayang... ♡";
