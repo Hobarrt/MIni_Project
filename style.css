@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Courier+Prime&family=Caveat:wght@500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #300B0A;
+}
+
+.cover {
+    position: relative;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 80px;
+
+    background: #300B0A;
+
+    overflow: hidden;
+}
+
+
+.ornamen {
+    position: absolute;
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+.heart-1 { width: 46px; top: 8%;  left: 4%;  transform: rotate(-6deg); }
+.heart-2 { width: 30px; top: 40%; left: 92%; transform: rotate(8deg); }
+
+.sparkle-1 { width: 26px; top: 14%; left: 60%; }
+.sparkle-2 { width: 18px; top: 60%; left: 96%; }
+.sparkle-3 { width: 16px; top: 20%; left: 3%; }
+
+.flower-1 { width: 34px; top: 24%; left: 8%; }
+.flower-2 { width: 30px; top: 72%; left: 63%; }
+
+.ribbon { width: 60px; top: 62%; left: 6%; transform: rotate(-6deg); }
+
+.moon { width: 90px; bottom: 4%; right: 4%; opacity: 0.9; }
+
+.curl { width: 160px; bottom: 9%; left: 2%; opacity: 0.7; }
+
+
+.sticky-note {
+    position: absolute;
+    top: 2%;
+    right: 4%;
+
+    width: 100px;
+    padding: 14px 10px 16px;
+
+    background: #ede1c8;
+    color: #300B0A;
+
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 11px;
+    line-height: 1.35;
+    text-align: center;
+
+    transform: rotate(5deg);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+.sticky-note::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 32px;
+    height: 14px;
+    background: rgba(243, 223, 189, 0.55);
+}
+
+
+.corner-text {
+    position: absolute;
+    bottom: 6%;
+    left: 4%;
+
+    font-family: "Caveat", cursive;
+    font-size: 26px;
+    line-height: 1.15;
+    color: #f3dfbd;
+    text-align: left;
+}
+
+
+
+
+.photo-kol {
+    position: relative;
+
+    width: 600px;
+    height: 700px;
+}
+
+.photo {
+    position: absolute;
+
+    width: 190px;
+
+    padding: 10px;
+
+    background: #f4ead7;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+
+    transition: 0.3s ease;
+
+    object-fit: cover;
+}
+
+.photo:hover {
+    transform: scale(1.05) rotate(0deg);
+    z-index: 10;
+}
+
+
+.photo::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 50px;
+    height: 20px;
+    background: rgba(243, 223, 189, 0.5);
+}
+
+
+
+.p1 { top: 20px;  left: 80px;  transform: rotate(-8deg); }
+.p2 { top: 30px;  left: 280px; transform: rotate(5deg); }
+.p3 { top: 220px; left: 20px;  transform: rotate(4deg); }
+.p4 { top: 200px; left: 230px; transform: rotate(-5deg); }
+.p5 { top: 400px; left: 70px;  transform: rotate(-7deg); }
+.p6 { top: 390px; left: 290px; transform: rotate(7deg); }
+.p7 { top: 520px; left: 180px; transform: rotate(-2deg); }
+
+
+
+
+.birthday {
+    position: relative;
+    z-index: 5;
+    top: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+
+h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 150px;
+    font-weight: 500;
+    color: #f3dfbd;
+    line-height: 0.75;
+    margin: 0;
+}
+
+
+
+
+h2 {
+    font-family: "Ballet", cursive;
+    font-size: 150px;
+    font-weight: 400;
+    color: #f3dfbd;
+    line-height: 0.75;
+    margin: 0;
+    margin-top: -15px;
+}
+
+
+
+
+.subtitle-line {
+    margin-top: 34px;
+}
+
+.subtitle-line span {
+    font-family: "Courier Prime", monospace;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #f3dfbd;
+}
+
+.subtitle-line hr {
+    width: 200px;
+    margin: 10px auto 0;
+    border: none;
+    border-top: 1px solid rgba(243, 223, 189, 0.6);
+}
+
+.gift-text {
+    font-family: "Courier Prime", monospace;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #f3dfbd;
+    margin-top: 40px;
+}
+
+
+
+
+.buttons {
+    display: flex;
+    gap: 50px;
+    margin-top: 70px;
+}
+
+button {
+    font-family: "Courier Prime", monospace;
+    font-size: 22px;
+    letter-spacing: 2px;
+
+    width: 260px;
+    padding: 18px;
+
+    border-radius: 50px;
+    border: none;
+
+    background-color: #f3dfbd;
+    color: #300B0A;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.made-with-love {
+    margin-top: 50px;
+    font-family: "Courier Prime", monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: rgba(243, 223, 189, 0.75);
+}

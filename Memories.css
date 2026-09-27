@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Courier+Prime&family=Caveat:wght@500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #2a0705;
+    min-height: 100vh;
+}
+
+.hidden { display: none !important; }
+
+.scene-home {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scene-bg {
+    width: 100%;
+    max-width: 1536px;
+    display: block;
+}
+
+/* ============ HOTSPOT (area klik transparan) ============ */
+
+.hotspot {
+    position: absolute;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.back-hotspot {
+    top: 1%;
+    left: 1%;
+    width: 10%;
+    height: 6%;
+}
+
+.memory-hotspot {
+    border-radius: 30px;
+}
+
+/* ============ MODAL: cerita lengkap ============ */
+
+.memory-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 4, 7, 0.82);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+    animation: fadeIn 0.4s ease;
+    padding: 30px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.memory-modal {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    max-height: 82vh;
+    background: #f4ead7;
+    color: #5a3a24;
+    padding: 40px 36px 32px;
+    border-radius: 4px;
+    box-shadow: 0 24px 50px rgba(0,0,0,0.55);
+    text-align: left;
+    animation: fadeInUp 0.45s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.memory-modal::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 50px;
+    height: 20px;
+    background: rgba(90, 58, 36, 0.18);
+}
+
+.modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #7a2b26;
+    cursor: pointer;
+    opacity: 0.7;
+    line-height: 1;
+}
+
+.modal-close:hover { opacity: 1; }
+
+.modal-number {
+    font-family: "Courier Prime", monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #a3835c;
+}
+
+.modal-title {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 26px;
+    color: #7a2b26;
+    margin-top: 4px;
+    text-transform: lowercase;
+}
+
+.modal-divider {
+    width: 70px;
+    height: 1px;
+    background: rgba(90, 58, 36, 0.35);
+    margin: 16px 0 18px;
+}
+
+.modal-text-wrap {
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    flex: 1;
+}
+
+.modal-text-wrap::-webkit-scrollbar {
+    display: none;
+}
+
+.modal-text {
+    font-family: "Courier Prime", monospace;
+    font-size: 13px;
+    line-height: 1.9;
+    white-space: pre-line;
+}
+
+.modal-close-btn {
+    align-self: center;
+    margin-top: 22px;
+    font-family: "Courier Prime", monospace;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #7a2b26;
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(122, 43, 38, 0.4);
+    cursor: pointer;
+    padding-bottom: 2px;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>songs for you</title>
+    <link rel="stylesheet" href="music.css">
+</head>
+<body>
+
+    <!-- ============================================================
+         MUSIC HOME — pakai foto asli, tombol overlay transparan
+         ============================================================ -->
+    <section class="scene scene-home" id="musicHome">
+        <img class="scene-bg" src="Img/music-home.png" alt="songs for you">
+
+        <!-- overlay dim + blur dipakai saat masuk Final Music State -->
+        <div class="home-dim-overlay" id="homeDimOverlay"></div>
+
+        <!-- area klik "← back" bawaan foto, balik ke Hub -->
+        <a class="hotspot back-hotspot" href="Page1.html" aria-label="back to hub"></a>
+
+        <!-- area klik tombol "Sempurna" & "1000x" bawaan foto -->
+        <button class="hotspot song-hotspot hotspot-sempurna" id="hotspotSempurna" data-index="0" aria-label="play Sempurna"></button>
+        <button class="hotspot song-hotspot hotspot-1000x" id="hotspot1000x" data-index="1" aria-label="play 1000x"></button>
+
+        <!-- indikator kecil "sudah pernah dibuka", muncul nempel di tombol -->
+        <span class="found-mark found-mark-sempurna hidden" id="foundMarkSempurna">✧</span>
+        <span class="found-mark found-mark-1000x hidden" id="foundMark1000x">✧</span>
+
+        <!-- ============ FINAL MUSIC STATE (menyatu di atas Home) ============ -->
+        <div class="final-layer hidden" id="finalLayer">
+            <p class="final-text" id="finalText1"></p>
+            <button class="final-btn hidden" id="finalBtn">one more thing ♡</button>
+            <a class="final-btn hidden" id="backHubBtn" href="Page1.html">back to hub ♡</a>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SONG DETAIL — template dipakai ulang untuk Sempurna & 1000x
+         ============================================================ -->
+    <section class="scene scene-detail hidden" id="songDetail">
+
+        <button class="back-link" id="detailBackBtn">← back</button>
+        <div class="page-counter" id="detailCounter">1 / 2</div>
+
+        <div class="detail-layout">
+
+            <!-- KIRI: vinyl + player -->
+            <div class="player-col">
+
+                <svg class="deco-note dn1" viewBox="0 0 24 30" fill="#f3dfbd"><path d="M9 2v16.2c-.9-.5-2-.7-3.1-.5C3.5 18 2 19.6 2 21.5 2 23.4 3.6 25 5.6 25c2.2 0 4.4-1.6 4.4-4.5V8l10-2v11.2c-.9-.5-2-.7-3.1-.5-2.4.3-3.9 2-3.9 3.8 0 1.9 1.6 3.5 3.6 3.5 2.2 0 4.4-1.6 4.4-4.5V0L9 2Z"/></svg>
+
+                <p class="song-title-main" id="songTitleMain">Sempurna</p>
+                <p class="song-artist-main" id="songArtistMain">Andra and The Backbone</p>
+                <div class="title-underline"></div>
+
+                <div class="turntable">
+                    <div class="vinyl" id="vinyl">
+                        <div class="vinyl-grooves"></div>
+                        <div class="vinyl-label"><span>♡</span></div>
+                    </div>
+                    <div class="tonearm" id="tonearm">
+                        <div class="tonearm-base"></div>
+                        <div class="tonearm-arm"></div>
+                    </div>
+                </div>
+
+                <p class="track-status" id="trackStatus"></p>
+
+                <div class="progress-wrap">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="time-row">
+                        <span id="timeCurrent">00:00</span>
+                        <span id="timeDuration">00:00</span>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="ctrl-btn" id="prevBtn" aria-label="previous song">⏮</button>
+                    <button class="ctrl-btn play-btn" id="playBtn" aria-label="play or pause">▶</button>
+                    <button class="ctrl-btn" id="nextBtn" aria-label="next song">⏭</button>
+                </div>
+
+                <p class="progress-caption" id="progressCaption">one song closer to you ♡</p>
+            </div>
+
+            <!-- KANAN: song info card + why this song card -->
+            <div class="cards-col">
+
+                <div class="song-info-card">
+                    <p class="card-song-title" id="cardSongTitle">♪ Sempurna</p>
+                    <p class="card-song-artist" id="cardSongArtist">Andra and The Backbone</p>
+                    <div class="card-divider"></div>
+                    <p class="card-quote" id="cardQuote">"a song for you ♡"</p>
+                </div>
+
+                <button class="why-btn" id="whyBtn">why this song? ♡</button>
+
+                <div class="why-card hidden" id="whyCard">
+                    <button class="why-close" id="whyClose">×</button>
+                    <p class="why-label">why this song?</p>
+                    <p class="why-text" id="whyText"></p>
+                    <button class="why-close-btn" id="whyCloseBtn">close ♡</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <audio id="audioPlayer" preload="metadata"></audio>
+    </section>
+
+    <script src="music.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a little wish for you</title>
+    <link rel="stylesheet" href="cake.css">
+</head>
+<body>
+
+    <a class="back-link" href="Page1.html">← back</a>
+    <div class="page-counter">✧ 2 / 4 ✧</div>
+
+    <div class="cake-page">
+
+        <p class="corner-note top-left">you deserve<br>all the good<br>things in<br>this world ♡</p>
+        <p class="corner-note bottom-right">happy birthday<br>my love ♡</p>
+
+        <header class="cake-header">
+            <svg class="deco-bow" viewBox="0 0 120 40" fill="none" stroke="#f3dfbd" stroke-width="1.3">
+                <path d="M60 20 L100 8 M60 20 L100 30 M60 20 L20 8 M60 20 L20 30"/>
+                <circle cx="60" cy="20" r="3" fill="#f3dfbd"/>
+            </svg>
+            <h1>a little wish for you <span class="heart-inline">♡</span></h1>
+            <div class="header-underline"></div>
+            <p class="subtitle">may all your wishes come true, sayang ♡</p>
+        </header>
+
+        <div class="wish-grid">
+
+            <!-- WISH 1 -->
+            <div class="wish-card wish-pos-1" id="wishCard0">
+                <img class="wish-paper" src="Img/wish1.png" alt="Wish 1">
+                <p class="wish-text-overlay">
+                    <!-- Ganti isi wish di sini -->
+                    I hope this year brings you more reasons to smile.<br><br>
+                    May your days be filled with little joys, big happiness, and people who love you as much as you deserve. ♡
+                </p>
+            </div>
+
+            <!-- WISH 2 -->
+            <div class="wish-card wish-pos-2" id="wishCard1">
+                <img class="wish-paper" src="Img/wish2.png" alt="Wish 2">
+                <p class="wish-text-overlay">
+                    I hope you get to experience more moments you'll want to remember.<br><br>
+                    New stories, new adventures, new achievements — all the good things, always. ♡
+                </p>
+            </div>
+
+            <!-- KUE + LILIN -->
+            <div class="cake-center">
+                <div class="cake-wrap" id="cakeWrap">
+
+                    <img class="cake-photo" src="Img/cake-photo.png" alt="birthday cake">
+
+                    <button class="candle-marker" id="candle0" data-index="0" style="left:30%; top:23%;" aria-label="candle 1">
+                        <span class="marker-glow"></span>
+                    </button>
+                    <button class="candle-marker" id="candle1" data-index="1" style="left:47.5%; top:15%;" aria-label="candle 2">
+                        <span class="marker-glow"></span>
+                    </button>
+                    <button class="candle-marker" id="candle2" data-index="2" style="left:65.5%; top:24%;" aria-label="candle 3">
+                        <span class="marker-glow"></span>
+                    </button>
+                    <button class="candle-marker" id="candle3" data-index="3" style="left:74.5%; top:19%;" aria-label="candle 4">
+                        <span class="marker-glow"></span>
+                    </button>
+
+                    <p class="found-toast" id="foundToast">you already found this one ♡</p>
+                </div>
+
+                <p class="cake-instruction" id="cakeInstruction">click the candles one by one ♡</p>
+                <button class="make-wish-btn hidden" id="makeWishBtn">✧ make a wish ♡ ✧</button>
+            </div>
+
+            <!-- WISH 3 -->
+            <div class="wish-card wish-pos-3" id="wishCard2">
+                <img class="wish-paper" src="Img/wish3.png" alt="Wish 3">
+                <p class="wish-text-overlay">
+                    I hope you find the courage to chase everything you want.<br><br>
+                    May you always be confident, strong, and never doubt how amazing you are. ♡
+                </p>
+            </div>
+
+            <!-- WISH 4 -->
+            <div class="wish-card wish-pos-4" id="wishCard3">
+                <img class="wish-paper" src="Img/wish4.png" alt="Wish 4">
+                <p class="wish-text-overlay">
+                    And most of all, I hope you always feel loved.<br><br>
+                    Because you deserve all the love, kindness, and happiness in this world. ♡
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- OVERLAY PENUTUP: make a wish sequence -->
+    <div class="final-overlay hidden" id="finalOverlay">
+        <svg class="deco-sparkle sp1" viewBox="0 0 24 24"><path d="M12 0 L13.5 10.5 L24 12 L13.5 13.5 L12 24 L10.5 13.5 L0 12 L10.5 10.5 Z" fill="#f3dfbd"/></svg>
+        <svg class="deco-sparkle sp2" viewBox="0 0 24 24"><path d="M12 0 L13.5 10.5 L24 12 L13.5 13.5 L12 24 L10.5 13.5 L0 12 L10.5 10.5 Z" fill="#f3dfbd"/></svg>
+        <svg class="deco-sparkle sp3" viewBox="0 0 24 24"><path d="M12 0 L13.5 10.5 L24 12 L13.5 13.5 L12 24 L10.5 13.5 L0 12 L10.5 10.5 Z" fill="#f3dfbd"/></svg>
+
+        <p class="final-text" id="finalText">make a wish, sayang... ♡</p>
+        <a class="back-final-btn hidden" id="backFinalBtn" href="Page1.html">back to my little world ♡</a>
+    </div>
+
+    <script src="cake.js"></script>
+</body>
+</html>

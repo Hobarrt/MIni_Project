@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Courier+Prime&family=Caveat:wght@500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #300B0A;
+}
+
+.hub {
+    position: relative;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 50px;
+
+    padding: 60px 40px;
+
+    overflow: hidden;
+}
+
+/* ORNAMEN & TEKS SUDUT */
+
+.ornamen {
+    position: absolute;
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+.sparkle-top { width: 22px; top: 6%; left: 48%; }
+
+.corner-text {
+    position: absolute;
+    font-family: "Caveat", cursive;
+    font-size: 24px;
+    line-height: 1.2;
+    color: #f3dfbd;
+}
+
+.top-left { top: 5%; left: 4%; text-align: left; }
+.bottom-right { bottom: 6%; right: 4%; text-align: right; }
+
+.sticky-note {
+    position: absolute;
+    top: 4%;
+    right: 5%;
+
+    width: 110px;
+    padding: 14px 10px 18px;
+
+    background: #ede1c8;
+    color: #5a0f18;
+
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 12px;
+    line-height: 1.35;
+    text-align: center;
+
+    transform: rotate(5deg);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+.sticky-note::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 34px;
+    height: 14px;
+    background: rgba(243, 223, 189, 0.55);
+}
+
+/* HEADER */
+
+.hub-header p {
+    font-family: "Courier Prime", monospace;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #f3dfbd;
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* CARDS */
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 190px;
+
+    text-decoration: none;
+    color: #f3dfbd;
+
+    padding: 20px 10px;
+    border-radius: 16px;
+
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    background: rgba(243, 223, 189, 0.06);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 18px;
+}
+
+.card-icon-img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    margin-bottom: 14px;
+    filter: drop-shadow(0 8px 14px rgba(0,0,0,0.45));
+    transition: 0.3s ease;
+}
+
+.card:hover .card-icon-img {
+    transform: scale(1.05);
+}
+
+.card h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 3px;
+}
+
+.card hr {
+    width: 60px;
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid rgba(243, 223, 189, 0.6);
+}
+
+.card span {
+    font-family: "Courier Prime", monospace;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: rgba(243, 223, 189, 0.8);
+}
+
+/* CHOOSE ONE */
+
+.choose-line {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 20px;
+    color: #f3dfbd;
+    letter-spacing: 2px;
+}
+
+/* BONUS SECTION - tersembunyi sampai 4 kartu terbuka */
+
+.bonus-section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    animation: fadeIn 0.6s ease;
+}
+
+.bonus-section.unlocked {
+    display: flex;
+}
+
+.bonus-lead {
+    font-family: "Courier Prime", monospace;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #f3dfbd;
+}
+
+.bonus-card h3 {
+    color: #ffe9c2;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

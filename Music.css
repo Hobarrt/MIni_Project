@@ -1,0 +1,577 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Courier+Prime&family=Caveat:wght@500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #5a0f18;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.hidden { display: none !important; }
+
+/* ============================================================
+   MUSIC HOME
+   ============================================================ */
+
+.scene-home {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2a0705;
+}
+
+.scene-bg {
+    width: 100%;
+    max-width: 1536px;
+    display: block;
+    transition: filter 1s ease, opacity 1s ease;
+}
+
+.scene-bg.dimmed {
+    filter: blur(4px) brightness(0.45);
+}
+
+.home-dim-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 4, 7, 0);
+    pointer-events: none;
+    transition: background 1s ease;
+}
+
+.home-dim-overlay.active {
+    background: rgba(20, 4, 7, 0.35);
+}
+
+/* hotspot klik transparan, posisi % relatif ke .scene-home */
+
+.hotspot {
+    position: absolute;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.back-hotspot {
+    top: 1%;
+    left: 1%;
+    width: 10%;
+    height: 7%;
+}
+
+.song-hotspot {
+    top: 66.5%;
+    width: 25%;
+    height: 13%;
+    border-radius: 40px;
+}
+
+.hotspot-sempurna { left: 22%; }
+.hotspot-1000x { left: 51.5%; }
+
+.found-mark {
+    position: absolute;
+    top: 62%;
+    font-size: 18px;
+    color: #f3dfbd;
+    opacity: 0.9;
+    pointer-events: none;
+    animation: markPulse 1.8s ease-in-out infinite;
+}
+
+.found-mark-sempurna { left: 44.5%; }
+.found-mark-1000x { left: 74%; }
+
+@keyframes markPulse {
+    0%, 100% { opacity: 0.5; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* ============================================================
+   FINAL MUSIC STATE — menyatu di atas Home, bukan halaman baru
+   ============================================================ */
+
+.final-layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 34px;
+    text-align: center;
+    padding: 20px;
+    z-index: 5;
+}
+
+.final-text {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 30px;
+    line-height: 1.6;
+    color: #f3dfbd;
+    max-width: 560px;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.final-text.show { opacity: 1; }
+
+.final-btn {
+    font-family: "Courier Prime", monospace;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    padding: 14px 30px;
+    border-radius: 50px;
+    border: 1px solid #f3dfbd;
+    background: rgba(90, 15, 24, 0.4);
+    color: #f3dfbd;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s ease;
+}
+
+.final-btn.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.final-btn:hover {
+    background: #f3dfbd;
+    color: #5a0f18;
+}
+
+/* ============================================================
+   SONG DETAIL
+   ============================================================ */
+
+.scene-detail {
+    position: relative;
+    min-height: 100vh;
+    padding: 90px 60px 60px;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.back-link {
+    position: fixed;
+    top: 26px;
+    left: 30px;
+    font-family: "Courier Prime", monospace;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    color: #f3dfbd;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.85;
+    z-index: 20;
+}
+
+.back-link:hover { opacity: 1; }
+
+.page-counter {
+    position: fixed;
+    top: 26px;
+    right: 30px;
+    font-family: "Courier Prime", monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #f3dfbd;
+    opacity: 0.8;
+    z-index: 20;
+}
+
+.detail-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 70px;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* --- kolom kiri: player --- */
+
+.player-col {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 320px;
+}
+
+.deco-note {
+    position: absolute;
+    width: 22px;
+    top: -30px;
+    left: -10px;
+    opacity: 0.7;
+}
+
+.song-title-main {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 30px;
+    color: #f3dfbd;
+    text-align: center;
+}
+
+.song-artist-main {
+    font-family: "Courier Prime", monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: rgba(243, 223, 189, 0.75);
+    margin-top: 4px;
+}
+
+.title-underline {
+    width: 90px;
+    height: 1px;
+    background: rgba(243, 223, 189, 0.4);
+    margin: 14px auto 22px;
+}
+
+.turntable {
+    position: relative;
+    width: 260px;
+    height: 240px;
+}
+
+.vinyl {
+    position: absolute;
+    left: 20px;
+    top: 30px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background:
+        repeating-radial-gradient(circle at center,
+            #1a1a1a 0px, #1a1a1a 2px,
+            #262626 2px, #262626 4px);
+    box-shadow: 0 18px 34px rgba(0,0,0,0.55), inset 0 0 0 2px rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.vinyl-grooves {
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+.vinyl-label {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #8f2530, #5a0f18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f3dfbd;
+    font-size: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.tonearm {
+    position: absolute;
+    top: 0;
+    right: 6px;
+    width: 14px;
+    height: 130px;
+    z-index: 2;
+}
+
+.tonearm-base {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #d9c6a5;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    z-index: 2;
+}
+
+.tonearm-arm {
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    width: 4px;
+    height: 108px;
+    background: linear-gradient(#e7d3b3, #c9ac81);
+    border-radius: 2px;
+    transform-origin: top center;
+    transform: translateX(-50%) rotate(-6deg);
+    transition: transform 0.6s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.tonearm-arm::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7a2b26;
+}
+
+.tonearm.playing .tonearm-arm {
+    transform: translateX(-50%) rotate(-38deg);
+}
+
+/* vinyl-nya statis (tidak wajib berputar); kelas ini disiapkan
+   kalau nanti kamu mau mengaktifkan putaran lagi */
+.vinyl.spinning {
+    animation: spinVinyl 4s linear infinite;
+}
+
+@keyframes spinVinyl {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.track-status {
+    font-family: "Courier Prime", monospace;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #d99a6c;
+    margin-top: 10px;
+    min-height: 16px;
+}
+
+.progress-wrap {
+    width: 260px;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(243, 223, 189, 0.25);
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #f3dfbd;
+    border-radius: 4px;
+    transition: width 0.15s linear;
+}
+
+.time-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-family: "Courier Prime", monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: rgba(243, 223, 189, 0.7);
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin-top: 18px;
+}
+
+.ctrl-btn {
+    background: none;
+    border: none;
+    color: #f3dfbd;
+    font-size: 15px;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: 0.25s ease;
+}
+
+.ctrl-btn:hover { opacity: 1; transform: scale(1.1); }
+
+.play-btn {
+    width: 52px;
+    height: 52px;
+    border: 1px solid #f3dfbd;
+    border-radius: 50%;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-btn:hover {
+    background: #f3dfbd;
+    color: #5a0f18;
+}
+
+.progress-caption {
+    margin-top: 18px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(243, 223, 189, 0.8);
+}
+
+/* --- kolom kanan: cards --- */
+
+.cards-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    width: 300px;
+    margin-top: 20px;
+}
+
+.song-info-card {
+    width: 100%;
+    background: #f4ead7;
+    color: #5a3a24;
+    padding: 26px 24px;
+    border-radius: 4px;
+    box-shadow: 0 16px 30px rgba(0,0,0,0.45);
+    position: relative;
+    text-align: center;
+}
+
+.song-info-card::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 46px;
+    height: 18px;
+    background: rgba(90, 58, 36, 0.18);
+}
+
+.card-song-title {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 20px;
+    color: #7a2b26;
+}
+
+.card-song-artist {
+    font-family: "Courier Prime", monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+    opacity: 0.8;
+}
+
+.card-divider {
+    width: 60px;
+    height: 1px;
+    background: rgba(90, 58, 36, 0.3);
+    margin: 14px auto;
+}
+
+.card-quote {
+    font-family: "Courier Prime", monospace;
+    font-size: 12.5px;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.why-btn {
+    font-family: "Courier Prime", monospace;
+    font-size: 12.5px;
+    letter-spacing: 1.5px;
+    color: #f3dfbd;
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(243, 223, 189, 0.5);
+    cursor: pointer;
+    padding-bottom: 2px;
+    opacity: 0.9;
+    transition: 0.25s ease;
+}
+
+.why-btn:hover { opacity: 1; }
+
+.why-card {
+    width: 100%;
+    background: #f4ead7;
+    color: #5a3a24;
+    padding: 26px 24px;
+    border-radius: 4px;
+    box-shadow: 0 16px 30px rgba(0,0,0,0.45);
+    position: relative;
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.why-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #7a2b26;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.why-close:hover { opacity: 1; }
+
+.why-label {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 17px;
+    color: #7a2b26;
+    margin-bottom: 12px;
+}
+
+.why-text {
+    font-family: "Courier Prime", monospace;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.why-close-btn {
+    margin-top: 18px;
+    font-family: "Courier Prime", monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #7a2b26;
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(122, 43, 38, 0.4);
+    cursor: pointer;
+    padding-bottom: 2px;
+}

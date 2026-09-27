@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>our little story</title>
+    <link rel="stylesheet" href="memories.css">
+</head>
+<body>
+
+    <section class="scene-home">
+        <img class="scene-bg" src="Img/memories-home.png" alt="our little story">
+
+        <!-- area klik "← back" bawaan foto, balik ke Hub -->
+        <a class="hotspot back-hotspot" href="Page1.html" aria-label="back to hub"></a>
+
+        <!-- area klik 4 tombol "read this memory" bawaan foto -->
+        <button class="hotspot memory-hotspot" data-index="0" style="left:23%; top:48.5%; width:18%; height:4%;" aria-label="read memory 1"></button>
+        <button class="hotspot memory-hotspot" data-index="1" style="left:52.5%; top:51.5%; width:17%; height:4.5%;" aria-label="read memory 2"></button>
+        <button class="hotspot memory-hotspot" data-index="2" style="left:22%; top:81%; width:19.5%; height:5%;" aria-label="read memory 3"></button>
+        <button class="hotspot memory-hotspot" data-index="3" style="left:52.5%; top:84.5%; width:16.5%; height:4.5%;" aria-label="read memory 4"></button>
+
+        <!-- ============ MODAL: cerita lengkap ============ -->
+        <div class="memory-modal-overlay hidden" id="memoryModalOverlay">
+            <div class="memory-modal">
+                <button class="modal-close" id="modalClose" aria-label="close">×</button>
+                <p class="modal-number" id="modalNumber">01</p>
+                <p class="modal-title" id="modalTitle">where it all started</p>
+                <div class="modal-divider"></div>
+                <div class="modal-text-wrap">
+                    <p class="modal-text" id="modalText"></p>
+                </div>
+                <button class="modal-close-btn" id="modalCloseBtn">close ♡</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="memories.js"></script>
+</body>
+</html>
