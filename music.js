@@ -4,7 +4,7 @@ const jumlahLagu = 2;
 
 const judulLagu = ["Sempurna", "1000x"];
 const penyanyi = ["Andra and The Backbone", "Dhea Indrawati"];
-const fileLagu = ["mp3/sempurna.mp3", "mp3/1000x.mp3"];
+const fileLagu = ["mp3/Sempurna.mp3", "mp3/1000x.mp3"];
 const bgLagu = ["img/song-bg.jpg", "img/song-bg-1000x.png"];
 
 
