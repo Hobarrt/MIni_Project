@@ -1,0 +1,27 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+.subpage {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* clickable area over each flower on the garden page */
+.hotspot {
+    position: absolute;
+    display: block;
+    background: transparent;
+}
+
+/* clickable area over the "x" close mark on each flower page */
+.close-hotspot {
+    position: absolute;
+    display: block;
+    background: transparent;
+    cursor: pointer;
+}

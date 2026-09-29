@@ -1,4 +1,3 @@
-// ================= GUARD: cek 4 page sudah dibuka semua =================
 const requiredKeys = ["visited_flower", "visited_cake", "visited_music", "visited_memories"];
 const allVisited = requiredKeys.every(key => localStorage.getItem(key) === "true");
 
@@ -12,11 +11,10 @@ if (!allVisited) {
     initLetter();
 }
 
-// ============================ ISI SURAT, DIPECAH JADI 4 HALAMAN =================
 function initLetter() {
 
     const pages = [
-        // 01 — The beginning
+        
         `<p class="page-tag">01 — the beginning</p>
          <p class="opener">Aloooooow sayaaaang nyaaa akuhhhh 🥹💞</p>
          <p>wiii, setelaaaah hampir tiiiaaappp hari ulun ucapinnn "pagi" ke sayaaaang, akhirnyaaa udaah tanggal 30 ajaaaa 😭</p>
@@ -31,7 +29,7 @@ function initLetter() {
              <span class="days-label">D A Y S</span>
          </div>
          <p>makasiiiihhh yaaa sayaaaanggg, buat 188 hariii yang udaah kitaaa lewatii barenggg. 188 hariii mungkin cuma angkaaa, tapiii buat ulun, di dalam angkaaa itu ada banyaaaakkk ceritaaa, banyaaaakkk ketawaaa, banyaaaakkk obrolaaann, banyaaaakkk momen kecil yang mungkin keliatannya sederhanaaa, tapiii tetap ulun ingattt.</p>
-         <p>makasiiiihhh karenaaa pernah hadirrr di hari-hari ulunn, pernah jadiii orang yang ulun cariinn, orang yang ulun tungguu, orang yang bikin hari biasaaa terasa sedikit lebih seruuu.</p>
+         <p>makasiiiihhh karenaaa pernah hadirrr di hari-hari ulunn, pernah jadiii orang yang ulun cariinn, orang yang ulun tungguu, orang yang bikin hari biasaaa terasa jaaauuuhhh lebih seruuu.</p>
          <p>makasiiiihhh buat semuaaa hal kecil yang mungkin sayaaaang sendiri nga sadarrr sudah berarti banyaaakkk buat ulun.</p>`,
 
         // 03 — Thank you & sorry
@@ -41,9 +39,9 @@ function initLetter() {
 
         // 04 — The last words + ending
         `<p class="page-tag">04 — the last words</p>
-         <p>jadiii, kalau suatu hari nanti sayaaaang buka lagi hidden note iniii, ulun harap sayaaaang bisa ingattt...</p>
+         <p>jadiii, kalau suatu hari nanti sayaaaang buka lagi hidden note iniii, ulun harap <p style="text-align: center;">sayaaaang bisa ingattt...</p></p>
          <p class="big-line">pernah ada seseorang yang dengan caranya sendiri, sayanggg banget sama sayaaaanggg. 🥹💞</p>
-         <p>makasiiiihhh yaaa sayaaaangkuuu, untuk 188 hariii iniii.</p>
+         <p><p style = "text-align : center;">makasiiiihhh yaaa sayaaaangkuuu, untuk 188 hariii iniii.</p></p>
          <p class="signoff">happy 18th,<br>my favorite person. 🫶</p>
          <p class="handwritten">lopyuuuuuuu banyaaaaakkk banyaaaaakkkk,<br>lebih banyaaaakkk dariii yang bisaaa ulun tulisss di siniiii.</p>
          <p class="handwritten">luvvvv luvvvvvv sayaaaangkuuuuu 💞💕</p>
@@ -88,7 +86,6 @@ function initLetter() {
         }
     }
 
-    // STAGE 1 -> STAGE 2 : klik amplop, fade lalu pindah stage
     openEnvelopeBtn.addEventListener("click", () => {
         envelopeImg.classList.add("opening");
         setTimeout(() => {
@@ -96,20 +93,17 @@ function initLetter() {
         }, 400);
     });
 
-    // STAGE 2 -> STAGE 3 : klik kertas tanggal, tampilkan halaman 1
     dateRevealBtn.addEventListener("click", () => {
         currentPage = 0;
         renderPage(currentPage);
         showStage(stageLetter);
     });
 
-    // Tombol continue / close letter
     continueBtn.addEventListener("click", () => {
         if (currentPage < pages.length - 1) {
             currentPage++;
             renderPage(currentPage);
         } else {
-            // surat selesai, lipat balik ke amplop
             showStage(stageClosed);
         }
     });

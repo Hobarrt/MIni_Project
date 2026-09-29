@@ -5,20 +5,20 @@ localStorage.setItem("visited_music", "true");
 const jumlahLagu = 2;
 
 const judulLagu = ["Sempurna", "1000x"];
-const penyanyi = ["Andra and The Backbone", /* Ganti nama penyanyi 1000x */ "Dhea Indrawati"];
-const fileLagu = ["Audio/sempurna.mp3", "Audio/1000x.mp3"];
-const quoteLagu = ["a song for you ♡", "another song that somehow feels like you"];
+const penyanyi = ["Andra and The Backbone", "Dhea Indrawati"];
+// NOTE: nama file huruf kecil semua (server/hosting biasanya case-sensitive)
+const fileLagu = ["mp3/sempurna.mp3", "mp3/1000x.mp3"];
+// gambar latar tiap lagu. Isi img/song-bg-1000x.jpg kalau tampilan 1000x sudah jadi
+const bgLagu = ["img/song-bg.jpg", "img/song-bg-1000x.png"];
+
 
 const alasanLagu = [
-    // Ganti dengan alasan personal kamu untuk tiap lagu
-    "Ada beberapa lagu yang entah kenapa kalau didengar selalu bikin ulun ingat sama sayang. Setiap kali lagu ini terdengar, rasanya seperti ada sesuatu yang mengingatkan ulun sama hari-hari yang pernah kita lewati.\n\nMaybe that's why this song belongs here. ♡",
-    "Lagu ini selalu ngingetin aku sama kamu, karena setiap kali dengerin, rasanya kayak ada 1000 alasan buat terus sayang sama kamu.\n\nKayak lagu ini, kamu juga selalu jadi alasan aku buat jadi versi terbaik dari diri aku sendiri. ♡"
+    " Sempurnaaaa iyaaaa sempurnaaa, laguuu ini nge gambaarin kamuu bangeeet tauu, \n \n sempurna mungkin jadi satu kata yang bakal ulun pilih kalau suatu saat ada yang minta ulun jelasin kamu dalam satu kataa \n\n karnaa menurut ulunn sayaang emang sesempurnaa ituu, sayaaangg ituu baik, perasaaa, dan pekaa teradaap sekitar kamuu, kamuu ituu baik bangeet tauuu hatii kamu jugaa lembuut bangeet. \n\n terusss sayaaanag tuu jugaaaa manissss bangeeet tauuu. senyuman kamuuu ituuu... behhhh, manisss bangeeet. kadang ulun tuu sampai mikir, kok bisa sih ada orang yang senyumnya semanis ituuu? 🥰🥰 \n\n makanyaaa pas denger lagu iniii, langsung keingaat sayaaaangg. rasanya kayak setiap bagian dari lagu ini tuh emaaangg cocok banget buat ngegambarin betapaa indahnyaa sayaaangg di mata ulun dehhh \n\n sampaaai ulunn mikirr... \n hmmmm kayaaa nyaa lagu ini emaang diciptainnn buaat sayaaangg dehhh 🥰🥰  ♡",
+    "Sayaaaangg first timee ulun tau lagu ini dari kamuu tau,sayaaang masih ingaat kann, moment kamu ngirimin clip nya di tiktok kalaa ituu, awal nya feel sad tauuu, kayaa akuu nga bisa treat kamu sesuaai yang kamu mauu yaa :(( \n \n baruu di lirik laluuu akuu memandang muu dan tersadaar betapaa beruntung nyaaa, adaaa cintaa seperti cintaaamuuu kepadaakuuuu, nahhh di sanaa ulun nge freezz, terdiaaam baru kayaa feel so deeply in loveeee, kayaaa di sayaaaaangg bangeett, sampaaai sekaraaang ulun masih ingaata feel pertamaa kali dengeer ituuu, lagu in masuk salaah satu spesiaaal song yang ulun dapaat dari kamuuu, \n \n mungkinn kamu ngerasaa lagu ini ya udah ajaa, kayaa lagu romance padaa umum nyaaa, tapi ketikaa sayaang kirim ituu ke ulunn trust mee inipunyaa kenangaan nya sendirii, i reallyy falling in lovee with youu, i really sad because youu, bukaan sedi dalam arti buruk yaa sayaangg, lebih ke araah udaaah jadi yang sayaang mau belum yaa? but at the and i hopee i can treat like you want\n \n gituuu dehh sayaaanggg why i choose this sound \n I loveeee youuuu sayaangkuu. ♡"
 ];
 
-// status TRUE kalau lagu itu sudah pernah dibuka/didengarkan
 let statusLagu = [false, false];
 let laguSedangDiputar = -1;
-let musikBerjalan = false;
 
 // ================= ELEMENT: HOME =================
 const musicHome = document.getElementById("musicHome");
@@ -35,23 +35,18 @@ const backHubBtn = document.getElementById("backHubBtn");
 
 // ================= ELEMENT: DETAIL =================
 const songDetail = document.getElementById("songDetail");
+const songBg = document.getElementById("songBg");
 const detailBackBtn = document.getElementById("detailBackBtn");
-const detailCounter = document.getElementById("detailCounter");
-const songTitleMain = document.getElementById("songTitleMain");
-const songArtistMain = document.getElementById("songArtistMain");
-const cardSongTitle = document.getElementById("cardSongTitle");
-const cardSongArtist = document.getElementById("cardSongArtist");
-const cardQuote = document.getElementById("cardQuote");
-const vinyl = document.getElementById("vinyl");
-const tonearm = document.getElementById("tonearm");
-const trackStatus = document.getElementById("trackStatus");
+const vinylLabel = document.getElementById("vinylLabel");
 const progressBar = document.getElementById("progressBar");
 const progressFill = document.getElementById("progressFill");
+const progressKnob = document.getElementById("progressKnob");
 const timeCurrent = document.getElementById("timeCurrent");
 const timeDuration = document.getElementById("timeDuration");
 const playBtn = document.getElementById("playBtn");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
+const heartMark = document.getElementById("heartMark");
 const whyBtn = document.getElementById("whyBtn");
 const whyCard = document.getElementById("whyCard");
 const whyText = document.getElementById("whyText");
@@ -59,35 +54,102 @@ const whyClose = document.getElementById("whyClose");
 const whyCloseBtn = document.getElementById("whyCloseBtn");
 const audioPlayer = document.getElementById("audioPlayer");
 
+// format 01:26 (sama seperti di gambar)
 function formatTime(sec) {
     if (!isFinite(sec) || sec < 0) sec = 0;
     const m = Math.floor(sec / 60);
     const s = Math.floor(sec % 60);
-    return `${m}:${s.toString().padStart(2, "0")}`;
+    return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
 }
+
+// ================= PROGRESS (durasi betulan gerak) =================
+function setProgress(ratio) {
+    ratio = Math.min(Math.max(ratio, 0), 1);
+    const pct = ratio * 100 + "%";
+    progressFill.style.width = pct;
+    progressKnob.style.left = pct;
+}
+
+function updateProgress() {
+    timeCurrent.textContent = formatTime(audioPlayer.currentTime);
+    if (audioPlayer.duration) {
+        setProgress(audioPlayer.currentTime / audioPlayer.duration);
+    }
+}
+
+// ================= UI PLAY / PAUSE (ikut status audio yang asli) =================
+function updatePlayingUI() {
+    const playing = !audioPlayer.paused && !audioPlayer.ended;
+    playBtn.classList.toggle("is-playing", playing);
+    playBtn.setAttribute("aria-label", playing ? "pause" : "play");
+    vinylLabel.classList.toggle("spinning", playing);
+    heartMark.classList.toggle("beat", playing);
+}
+
+audioPlayer.addEventListener("play", updatePlayingUI);
+audioPlayer.addEventListener("pause", updatePlayingUI);
+audioPlayer.addEventListener("ended", () => {
+    audioPlayer.currentTime = 0;
+    updateProgress();
+    updatePlayingUI();
+});
+audioPlayer.addEventListener("loadedmetadata", () => {
+    timeDuration.textContent = formatTime(audioPlayer.duration);
+});
+audioPlayer.addEventListener("durationchange", () => {
+    timeDuration.textContent = formatTime(audioPlayer.duration);
+});
+audioPlayer.addEventListener("timeupdate", updateProgress);
+
+playBtn.addEventListener("click", () => {
+    if (audioPlayer.paused) {
+        audioPlayer.play().catch(() => {});
+    } else {
+        audioPlayer.pause();
+    }
+});
+
+// ================= SEEK: klik / geser di progress bar =================
+let seeking = false;
+
+function seekFromEvent(e) {
+    if (!audioPlayer.duration) return;
+    const rect = progressBar.getBoundingClientRect();
+    const ratio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+    audioPlayer.currentTime = ratio * audioPlayer.duration;
+    updateProgress();
+}
+
+progressBar.addEventListener("pointerdown", (e) => {
+    seeking = true;
+    progressBar.setPointerCapture(e.pointerId);
+    seekFromEvent(e);
+});
+progressBar.addEventListener("pointermove", (e) => { if (seeking) seekFromEvent(e); });
+progressBar.addEventListener("pointerup", () => { seeking = false; });
+progressBar.addEventListener("pointercancel", () => { seeking = false; });
 
 // ================= BUKA SONG DETAIL =================
 function bukaLagu(index) {
+    // lagu sebelumnya (kalau pindah lewat prev/next) dianggap sudah dibuka
+    if (laguSedangDiputar >= 0) statusLagu[laguSedangDiputar] = true;
+
     laguSedangDiputar = index;
 
-    songTitleMain.textContent = judulLagu[index];
-    songArtistMain.textContent = penyanyi[index];
-    cardSongTitle.textContent = "♪ " + judulLagu[index];
-    cardSongArtist.textContent = penyanyi[index];
-    cardQuote.textContent = `"${quoteLagu[index]}"`;
-    detailCounter.textContent = `${index + 1} / ${jumlahLagu}`;
+    if (bgLagu[index]) {
+        songBg.src = bgLagu[index];
+        vinylLabel.style.backgroundImage = `url("${bgLagu[index]}")`;
+    }
 
     audioPlayer.pause();
     audioPlayer.src = fileLagu[index];
     audioPlayer.currentTime = 0;
-    progressFill.style.width = "0%";
+    setProgress(0);
     timeCurrent.textContent = "00:00";
     timeDuration.textContent = "00:00";
-    musikBerjalan = false;
     updatePlayingUI();
 
     whyCard.classList.add("hidden");
-
     musicHome.classList.add("hidden");
     songDetail.classList.remove("hidden");
 }
@@ -95,82 +157,30 @@ function bukaLagu(index) {
 hotspotSempurna.addEventListener("click", () => bukaLagu(0));
 hotspot1000x.addEventListener("click", () => bukaLagu(1));
 
-prevBtn.addEventListener("click", () => {
-    const newIndex = (laguSedangDiputar - 1 + jumlahLagu) % jumlahLagu;
-    bukaLagu(newIndex);
-});
-
-nextBtn.addEventListener("click", () => {
-    const newIndex = (laguSedangDiputar + 1) % jumlahLagu;
-    bukaLagu(newIndex);
-});
-
-// ================= PLAY / PAUSE =================
-function updatePlayingUI() {
-    if (musikBerjalan) {
-        tonearm.classList.add("playing");
-        playBtn.textContent = "⏸";
-        trackStatus.textContent = "▶ playing...";
+// pindah lagu; kalau tampilan lagu lain belum ada, lagu diulang dari awal
+function pindahLagu(index) {
+    if (bgLagu[index]) {
+        bukaLagu(index);
     } else {
-        tonearm.classList.remove("playing");
-        playBtn.textContent = "▶";
-        trackStatus.textContent = laguSedangDiputar === -1 ? "" : "⏸ paused";
+        audioPlayer.currentTime = 0;
+        updateProgress();
     }
 }
-
-playBtn.addEventListener("click", () => {
-    if (musikBerjalan) {
-        audioPlayer.pause();
-        musikBerjalan = false;
-    } else {
-        audioPlayer.play().catch(() => {});
-        musikBerjalan = true;
-    }
-    updatePlayingUI();
-});
-
-audioPlayer.addEventListener("loadedmetadata", () => {
-    timeDuration.textContent = formatTime(audioPlayer.duration);
-});
-
-audioPlayer.addEventListener("timeupdate", () => {
-    timeCurrent.textContent = formatTime(audioPlayer.currentTime);
-    if (audioPlayer.duration) {
-        progressFill.style.width = (audioPlayer.currentTime / audioPlayer.duration) * 100 + "%";
-    }
-});
-
-audioPlayer.addEventListener("ended", () => {
-    musikBerjalan = false;
-    updatePlayingUI();
-    progressFill.style.width = "0%";
-});
-
-progressBar.addEventListener("click", (e) => {
-    if (!audioPlayer.duration) return;
-    const rect = progressBar.getBoundingClientRect();
-    const ratio = (e.clientX - rect.left) / rect.width;
-    audioPlayer.currentTime = ratio * audioPlayer.duration;
-});
+prevBtn.addEventListener("click", () => pindahLagu((laguSedangDiputar - 1 + jumlahLagu) % jumlahLagu));
+nextBtn.addEventListener("click", () => pindahLagu((laguSedangDiputar + 1) % jumlahLagu));
 
 // ================= WHY THIS SONG? =================
 whyBtn.addEventListener("click", () => {
     whyText.textContent = alasanLagu[laguSedangDiputar];
     whyCard.classList.remove("hidden");
 });
-
-function tutupWhyCard() {
-    whyCard.classList.add("hidden");
-}
+function tutupWhyCard() { whyCard.classList.add("hidden"); }
 whyClose.addEventListener("click", tutupWhyCard);
 whyCloseBtn.addEventListener("click", tutupWhyCard);
 
 // ================= BACK DARI SONG DETAIL =================
 detailBackBtn.addEventListener("click", () => {
     audioPlayer.pause();
-    musikBerjalan = false;
-
-    // simpan status: lagu ini sudah pernah dibuka
     statusLagu[laguSedangDiputar] = true;
 
     songDetail.classList.add("hidden");
@@ -179,9 +189,7 @@ detailBackBtn.addEventListener("click", () => {
     if (statusLagu[0]) foundMarkSempurna.classList.remove("hidden");
     if (statusLagu[1]) foundMark1000x.classList.remove("hidden");
 
-    // cek: apakah KEDUA lagu sudah pernah dibuka?
-    const semuaLaguDilihat = statusLagu.every(s => s === true);
-    if (semuaLaguDilihat) {
+    if (statusLagu.every(s => s === true)) {
         setTimeout(mulaiFinalMusicState, 700);
     }
 });
@@ -192,9 +200,7 @@ function fadeSwapText(el, text, holdMs, callback) {
     setTimeout(() => {
         el.textContent = text;
         el.classList.add("show");
-        setTimeout(() => {
-            if (callback) callback();
-        }, holdMs);
+        setTimeout(() => { if (callback) callback(); }, holdMs);
     }, 500);
 }
 
@@ -214,12 +220,10 @@ function mulaiFinalMusicState() {
         if (i < seq1.length - 1) {
             fadeSwapText(finalText1, seq1[i], 1800, () => { i++; nextLine(); });
         } else {
-            // baris terakhir tetap tampil, lalu tombol muncul
             fadeSwapText(finalText1, seq1[i], 600, () => {
-                // FIX: harus dilepas dulu "hidden"-nya (display:none !important)
-                // sebelum class "show" (opacity/transform) bisa terlihat efeknya.
                 finalBtn.classList.remove("hidden");
-                finalBtn.classList.add("show");
+                // beri 1 frame supaya transisi opacity jalan
+                requestAnimationFrame(() => finalBtn.classList.add("show"));
             });
         }
     }
@@ -237,15 +241,10 @@ finalBtn.addEventListener("click", () => {
     let j = 0;
     function nextLine2() {
         if (j < seq2.length) {
-            fadeSwapText(finalText1, seq2[j].text, seq2[j].hold, () => {
-                j++;
-                nextLine2();
-            });
+            fadeSwapText(finalText1, seq2[j].text, seq2[j].hold, () => { j++; nextLine2(); });
         } else {
-            // FIX: sama seperti finalBtn, "hidden" harus dilepas dulu
-            
             backHubBtn.classList.remove("hidden");
-            backHubBtn.classList.add("show");
+            requestAnimationFrame(() => backHubBtn.classList.add("show"));
         }
     }
     nextLine2();

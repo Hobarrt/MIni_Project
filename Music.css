@@ -1,13 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Courier+Prime&family=Caveat:wght@500;600&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: #5a0f18;
+    background-color: #2a0705;
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -33,10 +29,7 @@ body {
     display: block;
     transition: filter 1s ease, opacity 1s ease;
 }
-
-.scene-bg.dimmed {
-    filter: blur(4px) brightness(0.45);
-}
+.scene-bg.dimmed { filter: blur(4px) brightness(0.45); }
 
 .home-dim-overlay {
     position: absolute;
@@ -45,12 +38,7 @@ body {
     pointer-events: none;
     transition: background 1s ease;
 }
-
-.home-dim-overlay.active {
-    background: rgba(20, 4, 7, 0.35);
-}
-
-/* hotspot klik transparan, posisi % relatif ke .scene-home */
+.home-dim-overlay.active { background: rgba(20, 4, 7, 0.35); }
 
 .hotspot {
     position: absolute;
@@ -60,20 +48,9 @@ body {
     padding: 0;
 }
 
-.back-hotspot {
-    top: 1%;
-    left: 1%;
-    width: 10%;
-    height: 7%;
-}
+.back-hotspot { top: 1%; left: 1%; width: 10%; height: 7%; }
 
-.song-hotspot {
-    top: 66.5%;
-    width: 25%;
-    height: 13%;
-    border-radius: 40px;
-}
-
+.song-hotspot { top: 66.5%; width: 25%; height: 13%; border-radius: 40px; }
 .hotspot-sempurna { left: 22%; }
 .hotspot-1000x { left: 51.5%; }
 
@@ -86,7 +63,6 @@ body {
     pointer-events: none;
     animation: markPulse 1.8s ease-in-out infinite;
 }
-
 .found-mark-sempurna { left: 44.5%; }
 .found-mark-1000x { left: 74%; }
 
@@ -96,7 +72,7 @@ body {
 }
 
 /* ============================================================
-   FINAL MUSIC STATE — menyatu di atas Home, bukan halaman baru
+   FINAL MUSIC STATE
    ============================================================ */
 
 .final-layer {
@@ -122,7 +98,6 @@ body {
     opacity: 0;
     transition: opacity 0.8s ease;
 }
-
 .final-text.show { opacity: 1; }
 
 .final-btn {
@@ -140,438 +115,225 @@ body {
     transform: translateY(8px);
     transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s ease;
 }
-
-.final-btn.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.final-btn:hover {
-    background: #f3dfbd;
-    color: #5a0f18;
-}
+.final-btn.show { opacity: 1; transform: translateY(0); }
+.final-btn:hover { background: #f3dfbd; color: #5a0f18; }
 
 /* ============================================================
-   SONG DETAIL
+   SONG DETAIL — semua posisi dalam % dari gambar (16:9)
    ============================================================ */
 
 .scene-detail {
-    position: relative;
     min-height: 100vh;
-    padding: 90px 60px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #290707;
     animation: fadeIn 0.6s ease;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-.back-link {
-    position: fixed;
-    top: 26px;
-    left: 30px;
-    font-family: "Courier Prime", monospace;
-    font-size: 14px;
-    letter-spacing: 1.5px;
-    color: #f3dfbd;
-    background: none;
-    border: none;
-    cursor: pointer;
-    opacity: 0.85;
-    z-index: 20;
-}
-
-.back-link:hover { opacity: 1; }
-
-.page-counter {
-    position: fixed;
-    top: 26px;
-    right: 30px;
-    font-family: "Courier Prime", monospace;
-    font-size: 13px;
-    letter-spacing: 2px;
-    color: #f3dfbd;
-    opacity: 0.8;
-    z-index: 20;
-}
-
-.detail-layout {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 70px;
-    max-width: 1000px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-}
-
-/* --- kolom kiri: player --- */
-
-.player-col {
+.stage {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 320px;
+    width: min(100vw, calc(100vh * 16 / 9));
+    aspect-ratio: 16 / 9;
+    container-type: inline-size;
+    --ink: #4a1218;
+    --cream: #f0dcc0;
 }
 
-.deco-note {
+.song-bg {
     position: absolute;
-    width: 22px;
-    top: -30px;
-    left: -10px;
-    opacity: 0.7;
-}
-
-.song-title-main {
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-weight: 600;
-    font-size: 30px;
-    color: #f3dfbd;
-    text-align: center;
-}
-
-.song-artist-main {
-    font-family: "Courier Prime", monospace;
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: rgba(243, 223, 189, 0.75);
-    margin-top: 4px;
-}
-
-.title-underline {
-    width: 90px;
-    height: 1px;
-    background: rgba(243, 223, 189, 0.4);
-    margin: 14px auto 22px;
-}
-
-.turntable {
-    position: relative;
-    width: 260px;
-    height: 240px;
-}
-
-.vinyl {
-    position: absolute;
-    left: 20px;
-    top: 30px;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background:
-        repeating-radial-gradient(circle at center,
-            #1a1a1a 0px, #1a1a1a 2px,
-            #262626 2px, #262626 4px);
-    box-shadow: 0 18px 34px rgba(0,0,0,0.55), inset 0 0 0 2px rgba(255,255,255,0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-}
-
-.vinyl-grooves {
-    position: absolute;
-    inset: 8px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.04);
-}
-
-.vinyl-label {
-    width: 66px;
-    height: 66px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #8f2530, #5a0f18);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #f3dfbd;
-    font-size: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-}
-
-.tonearm {
-    position: absolute;
-    top: 0;
-    right: 6px;
-    width: 14px;
-    height: 130px;
-    z-index: 2;
-}
-
-.tonearm-base {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #d9c6a5;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    z-index: 2;
-}
-
-.tonearm-arm {
-    position: absolute;
-    top: 9px;
-    left: 50%;
-    width: 4px;
-    height: 108px;
-    background: linear-gradient(#e7d3b3, #c9ac81);
-    border-radius: 2px;
-    transform-origin: top center;
-    transform: translateX(-50%) rotate(-6deg);
-    transition: transform 0.6s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
-
-.tonearm-arm::after {
-    content: "";
-    position: absolute;
-    bottom: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #7a2b26;
-}
-
-.tonearm.playing .tonearm-arm {
-    transform: translateX(-50%) rotate(-38deg);
-}
-
-/* vinyl-nya statis (tidak wajib berputar); kelas ini disiapkan
-   kalau nanti kamu mau mengaktifkan putaran lagi */
-.vinyl.spinning {
-    animation: spinVinyl 4s linear infinite;
-}
-
-@keyframes spinVinyl {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.track-status {
-    font-family: "Courier Prime", monospace;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    color: #d99a6c;
-    margin-top: 10px;
-    min-height: 16px;
-}
-
-.progress-wrap {
-    width: 260px;
-    margin-top: 10px;
-}
-
-.progress-bar {
+    inset: 0;
     width: 100%;
-    height: 4px;
-    background: rgba(243, 223, 189, 0.25);
-    border-radius: 4px;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-.progress-fill {
-    width: 0%;
     height: 100%;
-    background: #f3dfbd;
-    border-radius: 4px;
-    transition: width 0.15s linear;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
-.time-row {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 6px;
-    font-family: "Courier Prime", monospace;
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: rgba(243, 223, 189, 0.7);
-}
-
-.controls {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    margin-top: 18px;
-}
-
-.ctrl-btn {
-    background: none;
-    border: none;
-    color: #f3dfbd;
-    font-size: 15px;
-    cursor: pointer;
-    opacity: 0.85;
-    transition: 0.25s ease;
-}
-
-.ctrl-btn:hover { opacity: 1; transform: scale(1.1); }
-
-.play-btn {
-    width: 52px;
-    height: 52px;
-    border: 1px solid #f3dfbd;
+/* label vinyl: potongan dari gambar, diputar */
+.vinyl-label-spin {
+    position: absolute;
+    left: 28.4%;          /* (469 - 55) / 1456 * 100 */
+    top: 44.6%;           /* (365) / 819 * 100 */
+    width: 7.55%;         /* 110 / 1456 */
+    aspect-ratio: 1;
     border-radius: 50%;
-    font-size: 16px;
+    background-image: url("Img/song-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: 1323.6% auto;
+    background-position: 30.76% 51.5%;
+    pointer-events: none;
+    animation: spinLabel 4s linear infinite;
+    animation-play-state: paused;
+}
+.vinyl-label-spin.spinning { animation-play-state: running; }
+
+@keyframes spinLabel { to { transform: rotate(360deg); } }
+
+.detail-back { left: 2%; top: 3.5%; width: 13%; height: 7%; }
+
+/* progress */
+.progress-bar {
+    position: absolute;
+    left: 53.2%;
+    width: 22.8%;
+    top: 46.6%;
+    height: 2.6%;
+    cursor: pointer;
+    touch-action: none;
+}
+.progress-track, .progress-fill {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 2px;
+}
+.progress-track { width: 100%; height: 0.14cqw; background: rgba(74, 18, 24, 0.35); }
+.progress-fill  { width: 0%; height: 0.24cqw; background: var(--ink); }
+.progress-knob {
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    width: 0.85cqw;
+    height: 0.85cqw;
+    border-radius: 50%;
+    background: var(--ink);
+    transform: translate(-50%, -50%);
+}
+
+.time {
+    position: absolute;
+    top: 49.1%;
+    font-family: "Courier Prime", monospace;
+    font-size: 0.95cqw;
+    letter-spacing: 0.08cqw;
+    color: var(--ink);
+    line-height: 1;
+}
+.time-current { left: 53.2%; }
+.time-duration { right: 24%; }   /* 100 - 76 */
+
+/* kontrol */
+.ctrl {
+    position: absolute;
+    border: none;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--cream);
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease, filter 0.2s ease;
 }
+.ctrl svg { fill: currentColor; }
+.ctrl:hover { transform: translate(-50%, -50%) scale(1.07); filter: brightness(1.25); }
+.ctrl:active { transform: translate(-50%, -50%) scale(0.95); }
 
-.play-btn:hover {
-    background: #f3dfbd;
-    color: #5a0f18;
-}
+.ctrl-side { top: 58%; width: 2.6cqw; height: 2.6cqw; }
+.ctrl-side svg { width: 55%; height: 55%; }
+.ctrl-prev { left: 57.55%; }
+.ctrl-next { left: 71.4%; }
 
-.progress-caption {
-    margin-top: 18px;
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-size: 15px;
-    color: rgba(243, 223, 189, 0.8);
-}
+.ctrl-play { top: 58%; left: 64.4%; width: 5.1cqw; height: 5.1cqw; }
+.ctrl-play svg { width: 52%; height: 52%; }
+.ctrl-play .icon-play { margin-left: 4%; }
 
-/* --- kolom kanan: cards --- */
+/* ganti ikon sesuai status */
+.ctrl-play .icon-pause { display: none; }
+.ctrl-play.is-playing .icon-play { display: none; }
+.ctrl-play.is-playing .icon-pause { display: block; }
+.ctrl-play.is-playing { box-shadow: 0 0 0 0.22cqw var(--ink), inset 0 0 0 0.18cqw rgba(240, 220, 192, 0.55); }
+.ctrl-play.is-playing { outline: none; }
 
-.cards-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
-    width: 300px;
-    margin-top: 20px;
-}
-
-.song-info-card {
-    width: 100%;
-    background: #f4ead7;
-    color: #5a3a24;
-    padding: 26px 24px;
-    border-radius: 4px;
-    box-shadow: 0 16px 30px rgba(0,0,0,0.45);
-    position: relative;
-    text-align: center;
-}
-
-.song-info-card::before {
-    content: "";
+.heart-mark {
     position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-2deg);
-    width: 46px;
-    height: 18px;
-    background: rgba(90, 58, 36, 0.18);
+    left: 64.4%;
+    top: 65.7%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5cqw;
+    color: var(--ink);
+    pointer-events: none;
+}
+.heart-mark.beat { animation: beat 1.2s ease-in-out infinite; }
+@keyframes beat {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.25); }
 }
 
-.card-song-title {
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-weight: 600;
-    font-size: 20px;
-    color: #7a2b26;
-}
+.why-hotspot { left: 57%; top: 76.3%; width: 14.6%; height: 6%; border-radius: 40px; }
 
-.card-song-artist {
-    font-family: "Courier Prime", monospace;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    margin-top: 4px;
-    opacity: 0.8;
-}
-
-.card-divider {
-    width: 60px;
-    height: 1px;
-    background: rgba(90, 58, 36, 0.3);
-    margin: 14px auto;
-}
-
-.card-quote {
-    font-family: "Courier Prime", monospace;
-    font-size: 12.5px;
-    line-height: 1.7;
-    font-style: italic;
-}
-
-.why-btn {
-    font-family: "Courier Prime", monospace;
-    font-size: 12.5px;
-    letter-spacing: 1.5px;
-    color: #f3dfbd;
-    background: none;
-    border: none;
-    border-bottom: 1px solid rgba(243, 223, 189, 0.5);
-    cursor: pointer;
-    padding-bottom: 2px;
-    opacity: 0.9;
-    transition: 0.25s ease;
-}
-
-.why-btn:hover { opacity: 1; }
-
+/* kartu alasan */
 .why-card {
-    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 34cqw;
+    max-height: 90%;
+    overflow-y: auto;
     background: #f4ead7;
     color: #5a3a24;
-    padding: 26px 24px;
+    padding: 2.4cqw 2.4cqw 2cqw;
     border-radius: 4px;
-    box-shadow: 0 16px 30px rgba(0,0,0,0.45);
-    position: relative;
+    box-shadow: 0 0 0 100vmax rgba(20, 4, 7, 0.55), 0 16px 30px rgba(0,0,0,0.5);
+    z-index: 10;
     animation: fadeInUp 0.5s ease;
 }
-
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(14px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translate(-50%, calc(-50% + 14px)); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
 }
 
 .why-close {
     position: absolute;
-    top: 10px;
-    right: 14px;
+    top: 0.8cqw;
+    right: 1.1cqw;
     background: none;
     border: none;
-    font-size: 16px;
+    font-size: 1.6cqw;
     color: #7a2b26;
     cursor: pointer;
     opacity: 0.7;
 }
-
 .why-close:hover { opacity: 1; }
 
 .why-label {
     font-family: "Cormorant Garamond", serif;
     font-style: italic;
     font-weight: 600;
-    font-size: 17px;
+    font-size: 1.9cqw;
     color: #7a2b26;
-    margin-bottom: 12px;
+    margin-bottom: 1.1cqw;
 }
-
 .why-text {
     font-family: "Courier Prime", monospace;
-    font-size: 12px;
+    font-size: 1.15cqw;
     line-height: 1.8;
+    white-space: pre-line;
 }
-
 .why-close-btn {
-    margin-top: 18px;
+    margin-top: 1.6cqw;
     font-family: "Courier Prime", monospace;
-    font-size: 11px;
-    letter-spacing: 1.5px;
+    font-size: 1.05cqw;
+    letter-spacing: 0.12cqw;
     color: #7a2b26;
     background: none;
     border: none;
     border-bottom: 1px solid rgba(122, 43, 38, 0.4);
     cursor: pointer;
     padding-bottom: 2px;
+}
+
+/* layar kecil (HP portrait): stage tetap 16:9, jadi kecil tapi utuh */
+@media (max-width: 700px) {
+    .why-card { width: 80cqw; padding: 5cqw; }
+    .why-label { font-size: 5cqw; }
+    .why-text { font-size: 3.2cqw; }
+    .why-close-btn { font-size: 3cqw; }
+    .why-close { font-size: 5cqw; }
 }

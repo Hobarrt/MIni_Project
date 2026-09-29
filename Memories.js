@@ -1,46 +1,62 @@
-
 localStorage.setItem("visited_memories", "true");
 
-
+// ================= DATA MEMORY =================
 
 const judulMemory = [
     "where it all started",
     "the \u201cconsumption\u201d mission",
-    "\u201csayang, tenang dulu...\u201d",
+    "wawancaraa kalaaa ituuu",
     "finally, us \u2661"
+];
+
+// Halaman khusus per memory. Isi nama file kalau memory itu sudah punya halaman sendiri,
+// kalau null berarti ceritanya dibuka lewat modal di bawah.
+const halamanMemory = [
+    null,
+    null,
+    null,
+    null
 ];
 
 const isiMemory = [
 `Sayaaaaaangg masi ingaaat pertemuaaan pertama kitaa kalaa ituuu? hmm mungkin bukan pertemuan pertama sii lebih ke arah interaksi pertama kitaa hihi
 
-inii tuu lucuu tauu buaat di ingaat, moment nyaa terjadi tanpaa rencana sebetul nyaa, kebetulaan bangeet, kitaa lagi ngumpul buaat nge packing hadiaah kann
-nahh di sanaa kitaa adaa ngobroll tipiss tipiss, ingaat kadaa pas ulun duduk truss minggirin hadiaah yang di atas mejaa, modus banget ya hihi, truss kalau sayaaang ingaat jugaa 
-disana kamuu ada nnaya packingaan nya baguss ngaa, truss di bulli mudii, baruu kamu nanyaa ke ulunn, truss ulun jawaab dehh baguss kokk, rapii wii good job
-truss syaaang jawaaab tuukan emang cuma ka rasyid yang baikk, jujuur di sana adaa bangeet malu sama tersanjung nyaa, gimanaa tidaa ratu nya bidadari bersabdaa sayaaang hihi
+inii tuu lucuu tauu buaat di ingaat, moment nyaa terjadi tanpaa rencana sebetul nyaa, kebetulaan bangeet, kitaa lagi ngumpul buaat nge packing hadiaah kann nahh di sanaa kitaa adaa ngobroll tipiss tipiss, ingaat kadaa pas ulun duduk truss minggirin hadiaah yang di atas mejaa, modus banget ya hihi, truss kalau sayaaang ingaat jugaa disana kamuu ada nnaya packingaan nya baguss ngaa, truss di bulli mudii, baruu kamu nanyaa ke ulunn, truss ulun jawaab dehh baguss kokk, rapii wii good job truss syaaang jawaaab tuukan emang cuma ka rasyid yang baikk, jujuur di sana adaa bangeet malu sama tersanjung nyaa, gimanaa tidaa ratu nya bidadari bersabdaa sayaaang hihi
 
 lucu yaa kalaau di ingaat, ternyata dari obrolan kecil itu bakal ada cerita sejauh ini. ♡`,
 
 `or... my very obvious excuse to see you ♡
 
-Masih inget nggak waktu kelas 12 ini? Aku mau nyolong konsumsi 😳 Terus kamu datang... dan gagal deh.
+hmmm sayaaang ingaaat kejadiaaan di gorr kalaa ituu sayaaangg, hihiii salaah satu moment yang bikin kitaa dekaat sebetunyaa
+kejadiaaan nya ngaa nyampe 10 menit tapi punyaa ceritaa nya sendirii \n\n 
+moment nyaaa pass ulunn mau ngambill konsumsii, mompong pembinaa masuk semuaaa kann lagi prosesi jablurr nahh ulun keluaar dehh mau ambil konsumm 
+ehh pas mau ngambil di bawaah mejaa kamuuu dataaaanggg, ketauaan dehh, ketahuaaan samaa si maniss ini sambil bawaa bayii \n\n 
+kamuu lagi bawa bayii kann pass ituu nahh habis ituu ulunn datangin kann, awaal nyaa tu supayaa kamuu nda curigaa ajaa ngapaian ulun sendiriaan di depan mwhehehe, baru dehh 
+kitaaa main sama bayii nyaaa,jujuuu mau ngobrol samaaa yang bawaa bayi nyaa sii, bukaan ke bayi nya mwhwhwhw \n\n 
+truss habiss ituu pas dah asik berduaa ehh di samperin ustadzz, ustadz ibnuu tuu tibaa tibaa bilaang 'yang diiaatin bayi nyaa bukan yang bawaa nyaa'
+hihiii gemeees deh kalaau di ingaat ingaat lagii bisaa bikin senyum senyum sendirii mwehehehe ♡`,
 
-Kamu bawa bayinya ibu kan waktu itu? Terus akhirnya kita malah main berdua sama bayinya.
+`satu lagi momeent yang bikin kitaaa dekaat, hmm ulun sii yang dekeetin mwhehehe 
+kamuuu ingaaat momeent wawancaraaa kalaaa ituuu sayaaangg, yang kamuu di samping nurii trus ulun maam mie gelas di belakaaang kamuuu mwehhehehe\n\n
+di moment ini ulun jadi penenang kamuu yaaa, supayaa kadaa meledaaak bangeet, jadi air di antaraa apii\n\n
+truuss truss ingaaatt kann ingaat kann moment kitaa jailinn jakii, kitaa connect bangeet yaa di sanaa jadi kompor wkwkw 
+kitaaa bikin nuri ngambeek ke jakii truss jaki nya panic bangeeet, padahaal yang ngomporin kitaa mwheheheh, astaghfirullahh sayaangg ishh ishh wkwkwkw \n\n 
+truss habiss wawancaraa sambil nunggu breifing kitaa adaa forbaar kann lucuu dehh ituuu, ulun nyalaain tv baru kamu ngajaakin ftoo, jadi dehh kitaa ftoo mau nya si berduaa yaa
+ulun sama kamuu ajaa, ehh ada satu yang ikutaaan nyempill wkwkwk yasudaaah lahhh, tapii dimanaaa ya fotoo ituu sekranaag?`,
 
-Kalau dipikir-pikir sekarang... aku cuma modus aja deh mwehehhehe, mau main sama bayinya, padahal mau ketemu sama yang bawa bayinya. ♡`,
+`seteeelaah berbagaaai hal kitaa lewatii akhirnyaa sampaai lahh waktu dimanaaa ulun nyataain perasaaan ulunn ke sayaanag yaaa
+27-03-2026 dann seteelaaah ituu kitaa keteemu lagi untuk terkahir kali nyaa ulun sebagaai siswaa, moment wisudaaa purnaa siswaaa \n\n
 
-`Terus ada lagi momen pas wawancara itu. Kamu duduk di depan ulun, trus ulun tenangin kamu, sayang.
+di snaaa terciptaaa lahh momeent kitaa keteeemuu setelaaah rencanaa panjaaang yaa, dari awal chataan ktaa dah ada rencanaa mau fotbar samaa kamuu pas wisudaaa
+akhirnyaaa tewujud jugaaa yaaa, fotbaar kitaaa pass bangeet meraah smaa creaaam, kayaa temaa websitee kalii inii\n\n 
 
-Abis itu kita fotbar kann... tapi fotonya sekarang mana yaa? 🥲
+mungkin bagi oraaang lain fotbaar sama pasangaan adalaah hal yang biasaaa bangeet nga ada special special nya samaa sekalii, tapii tidaak bagii ulunnn, 
+fotbaar samaa kamuu ituu memorablee bangeet, dan yaahh sampaai saat ini ftoo kitaa di figuraa ituu selalu terpajaang, bagii orang lain mungkin ini ftoo biasaaa
+tapi bagii ulun yang nda pernaaah fotbaar samaa cwee kecuali kaka kaka ulunn yaaa, inii hal baruu, hal yang begituu speciaaal, dann yapp sorry to sayy bahasaa tubuh nga bohong kann
+nervous nyaa ada bangeet, tiaraa sibaal sii di noticee gemeter tremornya keliataan bangeet yaaa, my first timeee, you takee it all\n\n 
+akhir kataaa i loveeee youuu sayaaaangg, i loveee youu as alwaysss
 
-Sedih sih kalau dipikir-pikir, tapi untungnya momennya masih inget.
-
-Kita juga sempat jailin Jaki kann waktu itu, terus habis dari sini... akhirnya ulun mulai caper sama kamu di IG. mweheehhe ♡`,
-
-`Dari yang awalnya cuma ngobrol tipis-tipis, sampai akhirnya kita punya foto bareng sebagai kita.
-
-Foto setelah wisuda ini mungkin cuma satu foto, tapi rasanya kayak penutup dari banyak cerita kecil sebelumnya.
-
-Dan sekarang... ulun malah kangen ketemu kamu lagi. ♡`
+yaaahh jadi kangeeen kamuu dehhh ♡`
 ];
 
 // ================= ELEMENT =================
@@ -53,6 +69,12 @@ const modalClose = document.getElementById("modalClose");
 const modalCloseBtn = document.getElementById("modalCloseBtn");
 
 function bukaMemory(index) {
+    // kalau memory ini punya halaman sendiri, pindah ke sana
+    if (halamanMemory[index]) {
+        window.location.href = halamanMemory[index];
+        return;
+    }
+
     modalNumber.textContent = String(index + 1).padStart(2, "0");
     modalTitle.textContent = judulMemory[index];
     modalText.textContent = isiMemory[index];
@@ -77,3 +99,9 @@ modalCloseBtn.addEventListener("click", tutupMemory);
 modalOverlay.addEventListener("click", (e) => {
     if (e.target === modalOverlay) tutupMemory();
 });
+
+// dibuka dari tombol "next memory" di halaman lain, contoh: memories.html?open=2
+const openParam = parseInt(new URLSearchParams(window.location.search).get("open"), 10);
+if (openParam >= 1 && openParam <= judulMemory.length) {
+    bukaMemory(openParam - 1);
+}
