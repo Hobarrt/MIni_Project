@@ -26,7 +26,6 @@ body {
     overflow: hidden;
 }
 
-/* ORNAMEN & TEKS SUDUT */
 
 .ornamen {
     position: absolute;
@@ -79,7 +78,6 @@ body {
     background: rgba(243, 223, 189, 0.55);
 }
 
-/* HEADER */
 
 .hub-header p {
     font-family: "Courier Prime", monospace;
@@ -90,7 +88,6 @@ body {
     line-height: 1.8;
 }
 
-/* CARDS */
 
 .cards {
     display: flex;
@@ -160,7 +157,6 @@ body {
     color: rgba(243, 223, 189, 0.8);
 }
 
-/* CHOOSE ONE */
 
 .choose-line {
     font-family: "Cormorant Garamond", serif;
@@ -170,7 +166,6 @@ body {
     letter-spacing: 2px;
 }
 
-/* BONUS SECTION - tersembunyi sampai 4 kartu terbuka */
 
 .bonus-section {
     display: none;

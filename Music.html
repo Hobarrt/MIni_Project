@@ -8,14 +8,12 @@
 </head>
 <body>
 
-    <!-- ============================================================
-         MUSIC HOME
-         ============================================================ -->
+    
     <section class="scene scene-home" id="musicHome">
-        <img class="scene-bg" src="Img/music-home.png" alt="songs for you">
+        <img class="scene-bg" src="img/music-home.png" alt="songs for you">
         <div class="home-dim-overlay" id="homeDimOverlay"></div>
 
-        <a class="hotspot back-hotspot" href="Page1.html" aria-label="back to hub"></a>
+        <a class="hotspot back-hotspot" href="page1.html" aria-label="back to hub"></a>
 
         <button class="hotspot song-hotspot hotspot-sempurna" id="hotspotSempurna" data-index="0" aria-label="play Sempurna"></button>
         <button class="hotspot song-hotspot hotspot-1000x" id="hotspot1000x" data-index="1" aria-label="play 1000x"></button>
@@ -26,25 +24,20 @@
         <div class="final-layer hidden" id="finalLayer">
             <p class="final-text" id="finalText1"></p>
             <button class="final-btn hidden" id="finalBtn">one more thing ♡</button>
-            <a class="final-btn hidden" id="backHubBtn" href="Page1.html">back to hub ♡</a>
+            <a class="final-btn hidden" id="backHubBtn" href="page1.html">back to hub ♡</a>
         </div>
     </section>
 
-    <!-- ============================================================
-         SONG DETAIL — background = gambar utama, kontrol = elemen hidup
-         ============================================================ -->
+    
     <section class="scene scene-detail hidden" id="songDetail">
         <div class="stage" id="stage">
 
             <img class="song-bg" id="songBg" src="img/song-bg.jpg" alt="">
 
-            <!-- label piringan hitam ikut berputar saat lagu jalan -->
             <div class="vinyl-label-spin" id="vinylLabel"></div>
 
-            <!-- area klik "← back" bawaan gambar -->
             <button class="hotspot detail-back" id="detailBackBtn" aria-label="back"></button>
 
-            <!-- progress -->
             <div class="progress-bar" id="progressBar">
                 <div class="progress-track"></div>
                 <div class="progress-fill" id="progressFill"></div>
@@ -53,7 +46,6 @@
             <span class="time time-current" id="timeCurrent">00:00</span>
             <span class="time time-duration" id="timeDuration">00:00</span>
 
-            <!-- kontrol -->
             <button class="ctrl ctrl-side ctrl-prev" id="prevBtn" aria-label="previous song">
                 <svg viewBox="0 0 24 24"><path d="M6 6h2.4v12H6zM10 12l8-6v12z"/></svg>
             </button>
@@ -69,10 +61,8 @@
 
             <span class="heart-mark" id="heartMark">♥</span>
 
-            <!-- area klik "why this song?" bawaan gambar -->
             <button class="hotspot why-hotspot" id="whyBtn" aria-label="why this song?"></button>
 
-            <!-- kartu alasan -->
             <div class="why-card hidden" id="whyCard">
                 <button class="why-close" id="whyClose">×</button>
                 <p class="why-label">why this song?</p>

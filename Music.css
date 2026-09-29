@@ -10,9 +10,6 @@ body {
 
 .hidden { display: none !important; }
 
-/* ============================================================
-   MUSIC HOME
-   ============================================================ */
 
 .scene-home {
     position: relative;
@@ -71,9 +68,7 @@ body {
     50% { opacity: 1; transform: scale(1.15); }
 }
 
-/* ============================================================
-   FINAL MUSIC STATE
-   ============================================================ */
+
 
 .final-layer {
     position: absolute;
@@ -118,9 +113,6 @@ body {
 .final-btn.show { opacity: 1; transform: translateY(0); }
 .final-btn:hover { background: #f3dfbd; color: #5a0f18; }
 
-/* ============================================================
-   SONG DETAIL — semua posisi dalam % dari gambar (16:9)
-   ============================================================ */
 
 .scene-detail {
     min-height: 100vh;
@@ -152,15 +144,14 @@ body {
     -webkit-user-drag: none;
 }
 
-/* label vinyl: potongan dari gambar, diputar */
 .vinyl-label-spin {
     position: absolute;
-    left: 28.4%;          /* (469 - 55) / 1456 * 100 */
-    top: 44.6%;           /* (365) / 819 * 100 */
-    width: 7.55%;         /* 110 / 1456 */
+    left: 28.4%;          
+    top: 44.6%;          
+    width: 7.55%;         
     aspect-ratio: 1;
     border-radius: 50%;
-    background-image: url("Img/song-bg.jpg");
+    background-image: url("img/song-bg.jpg");
     background-repeat: no-repeat;
     background-size: 1323.6% auto;
     background-position: 30.76% 51.5%;
@@ -174,7 +165,6 @@ body {
 
 .detail-back { left: 2%; top: 3.5%; width: 13%; height: 7%; }
 
-/* progress */
 .progress-bar {
     position: absolute;
     left: 53.2%;
@@ -214,9 +204,8 @@ body {
     line-height: 1;
 }
 .time-current { left: 53.2%; }
-.time-duration { right: 24%; }   /* 100 - 76 */
+.time-duration { right: 24%; }   
 
-/* kontrol */
 .ctrl {
     position: absolute;
     border: none;
@@ -243,7 +232,6 @@ body {
 .ctrl-play svg { width: 52%; height: 52%; }
 .ctrl-play .icon-play { margin-left: 4%; }
 
-/* ganti ikon sesuai status */
 .ctrl-play .icon-pause { display: none; }
 .ctrl-play.is-playing .icon-play { display: none; }
 .ctrl-play.is-playing .icon-pause { display: block; }
@@ -267,7 +255,6 @@ body {
 
 .why-hotspot { left: 57%; top: 76.3%; width: 14.6%; height: 6%; border-radius: 40px; }
 
-/* kartu alasan */
 .why-card {
     position: absolute;
     left: 50%;
@@ -329,7 +316,6 @@ body {
     padding-bottom: 2px;
 }
 
-/* layar kecil (HP portrait): stage tetap 16:9, jadi kecil tapi utuh */
 @media (max-width: 700px) {
     .why-card { width: 80cqw; padding: 5cqw; }
     .why-label { font-size: 5cqw; }

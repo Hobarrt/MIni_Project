@@ -15,7 +15,6 @@ body {
 
 .hidden { display: none !important; }
 
-/* ============ TOP BAR ============ */
 
 .back-link {
     position: fixed;
@@ -44,7 +43,6 @@ body {
     z-index: 20;
 }
 
-/* ============ CORNER NOTES ============ */
 
 .corner-note {
     position: absolute;
@@ -59,7 +57,6 @@ body {
 .top-left { top: 8%; left: 3%; text-align: left; }
 .bottom-right { bottom: 5%; right: 3%; text-align: right; }
 
-/* ============ HEADER ============ */
 
 .cake-page {
     padding: 90px 40px 60px;
@@ -103,7 +100,6 @@ body {
     opacity: 0.85;
 }
 
-/* ============ GRID: wish kiri | kue | wish kanan ============ */
 
 .wish-grid {
     display: grid;
@@ -128,7 +124,6 @@ body {
     align-items: center;
 }
 
-/* ============ WISH CARD (pakai foto kertas asli) ============ */
 
 .wish-card {
     position: relative;
@@ -180,9 +175,7 @@ body {
     display: none;
 }
 
-/* ============ CAKE ============ */
 
-/* ============ CAKE (foto asli) ============ */
 
 .cake-wrap {
     position: relative;
@@ -201,7 +194,6 @@ body {
     filter: brightness(0.35) drop-shadow(0 20px 34px rgba(0,0,0,0.5));
 }
 
-/* ============ MARKER LILIN (area klik di atas foto) ============ */
 
 .candle-marker {
     position: absolute;
@@ -261,7 +253,6 @@ body {
     opacity: 1;
 }
 
-/* ============ INSTRUKSI & TOMBOL ============ */
 
 .cake-instruction {
     font-family: "Courier Prime", monospace;
@@ -299,7 +290,6 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ============ FINAL OVERLAY (make a wish sequence) ============ */
 
 .final-overlay {
     position: fixed;

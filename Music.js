@@ -1,14 +1,10 @@
-// tandai sudah dikunjungi (dipakai hub buat cek unlock bonus page)
 localStorage.setItem("visited_music", "true");
 
-// ================= DATA LAGU =================
 const jumlahLagu = 2;
 
 const judulLagu = ["Sempurna", "1000x"];
 const penyanyi = ["Andra and The Backbone", "Dhea Indrawati"];
-// NOTE: nama file huruf kecil semua (server/hosting biasanya case-sensitive)
 const fileLagu = ["mp3/sempurna.mp3", "mp3/1000x.mp3"];
-// gambar latar tiap lagu. Isi img/song-bg-1000x.jpg kalau tampilan 1000x sudah jadi
 const bgLagu = ["img/song-bg.jpg", "img/song-bg-1000x.png"];
 
 
@@ -20,7 +16,6 @@ const alasanLagu = [
 let statusLagu = [false, false];
 let laguSedangDiputar = -1;
 
-// ================= ELEMENT: HOME =================
 const musicHome = document.getElementById("musicHome");
 const homeDimOverlay = document.getElementById("homeDimOverlay");
 const sceneBg = document.querySelector(".scene-bg");
@@ -33,7 +28,6 @@ const finalText1 = document.getElementById("finalText1");
 const finalBtn = document.getElementById("finalBtn");
 const backHubBtn = document.getElementById("backHubBtn");
 
-// ================= ELEMENT: DETAIL =================
 const songDetail = document.getElementById("songDetail");
 const songBg = document.getElementById("songBg");
 const detailBackBtn = document.getElementById("detailBackBtn");
@@ -54,7 +48,6 @@ const whyClose = document.getElementById("whyClose");
 const whyCloseBtn = document.getElementById("whyCloseBtn");
 const audioPlayer = document.getElementById("audioPlayer");
 
-// format 01:26 (sama seperti di gambar)
 function formatTime(sec) {
     if (!isFinite(sec) || sec < 0) sec = 0;
     const m = Math.floor(sec / 60);
@@ -62,7 +55,6 @@ function formatTime(sec) {
     return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
 }
 
-// ================= PROGRESS (durasi betulan gerak) =================
 function setProgress(ratio) {
     ratio = Math.min(Math.max(ratio, 0), 1);
     const pct = ratio * 100 + "%";
@@ -77,7 +69,6 @@ function updateProgress() {
     }
 }
 
-// ================= UI PLAY / PAUSE (ikut status audio yang asli) =================
 function updatePlayingUI() {
     const playing = !audioPlayer.paused && !audioPlayer.ended;
     playBtn.classList.toggle("is-playing", playing);
@@ -109,7 +100,6 @@ playBtn.addEventListener("click", () => {
     }
 });
 
-// ================= SEEK: klik / geser di progress bar =================
 let seeking = false;
 
 function seekFromEvent(e) {
@@ -129,9 +119,7 @@ progressBar.addEventListener("pointermove", (e) => { if (seeking) seekFromEvent(
 progressBar.addEventListener("pointerup", () => { seeking = false; });
 progressBar.addEventListener("pointercancel", () => { seeking = false; });
 
-// ================= BUKA SONG DETAIL =================
 function bukaLagu(index) {
-    // lagu sebelumnya (kalau pindah lewat prev/next) dianggap sudah dibuka
     if (laguSedangDiputar >= 0) statusLagu[laguSedangDiputar] = true;
 
     laguSedangDiputar = index;
@@ -157,7 +145,6 @@ function bukaLagu(index) {
 hotspotSempurna.addEventListener("click", () => bukaLagu(0));
 hotspot1000x.addEventListener("click", () => bukaLagu(1));
 
-// pindah lagu; kalau tampilan lagu lain belum ada, lagu diulang dari awal
 function pindahLagu(index) {
     if (bgLagu[index]) {
         bukaLagu(index);
@@ -169,7 +156,6 @@ function pindahLagu(index) {
 prevBtn.addEventListener("click", () => pindahLagu((laguSedangDiputar - 1 + jumlahLagu) % jumlahLagu));
 nextBtn.addEventListener("click", () => pindahLagu((laguSedangDiputar + 1) % jumlahLagu));
 
-// ================= WHY THIS SONG? =================
 whyBtn.addEventListener("click", () => {
     whyText.textContent = alasanLagu[laguSedangDiputar];
     whyCard.classList.remove("hidden");
@@ -178,7 +164,6 @@ function tutupWhyCard() { whyCard.classList.add("hidden"); }
 whyClose.addEventListener("click", tutupWhyCard);
 whyCloseBtn.addEventListener("click", tutupWhyCard);
 
-// ================= BACK DARI SONG DETAIL =================
 detailBackBtn.addEventListener("click", () => {
     audioPlayer.pause();
     statusLagu[laguSedangDiputar] = true;
@@ -194,7 +179,6 @@ detailBackBtn.addEventListener("click", () => {
     }
 });
 
-// ================= FINAL MUSIC STATE =================
 function fadeSwapText(el, text, holdMs, callback) {
     el.classList.remove("show");
     setTimeout(() => {
@@ -222,7 +206,7 @@ function mulaiFinalMusicState() {
         } else {
             fadeSwapText(finalText1, seq1[i], 600, () => {
                 finalBtn.classList.remove("hidden");
-                // beri 1 frame supaya transisi opacity jalan
+                
                 requestAnimationFrame(() => finalBtn.classList.add("show"));
             });
         }

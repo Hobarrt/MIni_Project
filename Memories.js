@@ -1,6 +1,5 @@
 localStorage.setItem("visited_memories", "true");
 
-// ================= DATA MEMORY =================
 
 const judulMemory = [
     "where it all started",
@@ -9,8 +8,6 @@ const judulMemory = [
     "finally, us \u2661"
 ];
 
-// Halaman khusus per memory. Isi nama file kalau memory itu sudah punya halaman sendiri,
-// kalau null berarti ceritanya dibuka lewat modal di bawah.
 const halamanMemory = [
     null,
     null,
@@ -59,7 +56,6 @@ akhir kataaa i loveeee youuu sayaaaangg, i loveee youu as alwaysss
 yaaahh jadi kangeeen kamuu dehhh ♡`
 ];
 
-// ================= ELEMENT =================
 const hotspots = document.querySelectorAll(".memory-hotspot");
 const modalOverlay = document.getElementById("memoryModalOverlay");
 const modalNumber = document.getElementById("modalNumber");
@@ -69,7 +65,6 @@ const modalClose = document.getElementById("modalClose");
 const modalCloseBtn = document.getElementById("modalCloseBtn");
 
 function bukaMemory(index) {
-    // kalau memory ini punya halaman sendiri, pindah ke sana
     if (halamanMemory[index]) {
         window.location.href = halamanMemory[index];
         return;
@@ -95,12 +90,10 @@ hotspots.forEach(btn => {
 modalClose.addEventListener("click", tutupMemory);
 modalCloseBtn.addEventListener("click", tutupMemory);
 
-// klik area gelap di luar kartu juga menutup modal
 modalOverlay.addEventListener("click", (e) => {
     if (e.target === modalOverlay) tutupMemory();
 });
 
-// dibuka dari tombol "next memory" di halaman lain, contoh: memories.html?open=2
 const openParam = parseInt(new URLSearchParams(window.location.search).get("open"), 10);
 if (openParam >= 1 && openParam <= judulMemory.length) {
     bukaMemory(openParam - 1);

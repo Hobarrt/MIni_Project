@@ -11,14 +11,12 @@ html, body { height: 100%; }
     overflow: hidden;
 }
 
-/* clickable area over each flower on the garden page */
 .hotspot {
     position: absolute;
     display: block;
     background: transparent;
 }
 
-/* clickable area over the "x" close mark on each flower page */
 .close-hotspot {
     position: absolute;
     display: block;

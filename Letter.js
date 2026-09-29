@@ -22,7 +22,6 @@ function initLetter() {
          <p>tapiii kali iniii ulun nga mauuu banyaaak ngomongin doa atau wishes buat sayaaaang, karenaaa nanti ada tempatnyaaa sendiriii heheee.</p>
          <p>di sini ulun cuma mauuu bilang makasiiiihhh.</p>`,
 
-        // 02 — 188 days
         `<p class="page-tag">02 — 188 days</p>
          <div class="days-block">
              <span class="days-number">188</span>
@@ -32,12 +31,10 @@ function initLetter() {
          <p>makasiiiihhh karenaaa pernah hadirrr di hari-hari ulunn, pernah jadiii orang yang ulun cariinn, orang yang ulun tungguu, orang yang bikin hari biasaaa terasa jaaauuuhhh lebih seruuu.</p>
          <p>makasiiiihhh buat semuaaa hal kecil yang mungkin sayaaaang sendiri nga sadarrr sudah berarti banyaaakkk buat ulun.</p>`,
 
-        // 03 — Thank you & sorry
         `<p class="page-tag">03 — thank you & sorry</p>
          <p>dan kalau selama 188 hariii ini ada hal dari ulun yang pernah bikin sayaaaang capeee, kecewaa, sediiihhh, atau ngerasa nga cukup disayanggg, ulun juga minta maaaaf yaaa sayaaaanggg 🫂</p>
          <p>ulun nga mauuu bilang 188 hariii ini selalu sempurnaaa, karenaaa kitaaa juga sama-sama manusiaaa, pasti ada hari yang enakkk dan ada hari yang nga enakkk. tapiii justru dari semuaaa ituuu, ulun bersyukurr pernah menjalaniii bagian perjalanan iniii sama sayaaaang.</p>`,
 
-        // 04 — The last words + ending
         `<p class="page-tag">04 — the last words</p>
          <p>jadiii, kalau suatu hari nanti sayaaaang buka lagi hidden note iniii, ulun harap <p style="text-align: center;">sayaaaang bisa ingattt...</p></p>
          <p class="big-line">pernah ada seseorang yang dengan caranya sendiri, sayanggg banget sama sayaaaanggg. 🥹💞</p>

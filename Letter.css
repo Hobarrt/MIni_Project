@@ -14,7 +14,6 @@ body {
 
 .hidden { display: none !important; }
 
-/* ============ LOCKED SCREEN (reuses look of subpage) ============ */
 
 .locked-screen {
     min-height: 100vh;
@@ -55,7 +54,6 @@ body {
     transform: translateY(-3px);
 }
 
-/* ============ LETTER WRAP ============ */
 
 .letter-wrap {
     min-height: 100vh;
@@ -101,7 +99,6 @@ body {
     color: #f3dfbd;
 }
 
-/* ============ ENVELOPE (pakai foto) ============ */
 
 .envelope-btn {
     background: none;
@@ -133,9 +130,7 @@ body {
     opacity: 0;
 }
 
-/* ============ PAPER (dipakai untuk stage tanggal & surat) ============ */
 
-/* ============ PAPER SCENE (amplop di belakang + kertas + bunga) ============ */
 
 .paper-scene {
     position: relative;
@@ -239,7 +234,6 @@ body {
     opacity: 0.65;
 }
 
-/* ============ LETTER PAGES ============ */
 
 .stage-letter {
     width: 100%;
@@ -363,7 +357,6 @@ body {
     margin: 18px 0 28px;
 }
 
-/* ============ BUTTONS ============ */
 
 .letter-btn {
     font-family: "Courier Prime", monospace;
@@ -423,7 +416,6 @@ body {
     margin-top: 6px;
 }
 
-/* ============ ORNAMEN TAMBAHAN ============ */
 
 .stage-envelope,
 .stage-closed {
@@ -462,7 +454,6 @@ body {
     max-width: 90px;
 }
 
-/* tape di atas paper */
 .paper::before {
     content: "";
     position: absolute;
@@ -475,7 +466,6 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
 
-/* doodle bunga di pojok kertas surat */
 .letter-doodle {
     position: absolute;
     bottom: 14px;
